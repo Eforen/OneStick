@@ -73,7 +73,7 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "C:\Games\VintageStory\Vintagestory\Mods\"
-copy "$(TargetDir)\$(TargetName).pdb" "C:\Games\VintageStory\Vintagestory\Mods\"</PostBuildEvent>
+    <PostBuildEvent>copy "$(TargetPath)" "$(SolutionDir)\mods\"
+copy "$(TargetDir)\$(TargetName).pdb" "$(SolutionDir)\mods\"</PostBuildEvent>
   </PropertyGroup>
 </Project>
