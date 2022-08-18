@@ -66,6 +66,7 @@
     <Content Include="modinfo.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AssemblyInfo.cs" />
     <Compile Include="src\ItemAxeFix.cs" />
     <Compile Include="src\ModConfig.cs" />
     <Compile Include="src\onestickSystem.cs" />

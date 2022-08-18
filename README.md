@@ -17,6 +17,7 @@ I started with this number as a static number but that did not feel right too ma
   - [Links n' Stuff](#links-n-stuff)
 - [Version Support](#version-support)
     - [Older Version Support](#older-version-support)
+  - [Screenshots](#screenshots)
   - [Config](#config)
     - [Options](#options)
       - [BranchDropRateStoneAxe](#branchdropratestoneaxe)
@@ -29,8 +30,8 @@ I started with this number as a static number but that did not feel right too ma
   - [Sticky sticky sticks](#sticky-sticky-sticks)
 
 ## Links n' Stuff
-* [Discord](https://discord.gg/7hUxGBzauw)
-* ModDB
+* [Discord](https://discord.gg/B548xTzfxX)
+* [ModDB](https://mods.vintagestory.at/onestick)
 * [Forum](https://www.vintagestory.at/forums/topic/9334-1165-onestick-treefellingfix/)
 
 # Version Support
@@ -39,6 +40,9 @@ I started with this number as a static number but that did not feel right too ma
 
 ### Older Version Support
 You you ask nicely and make an issue on github for it then I am likely to make a build for what ever version you want (within reason).
+
+## Screenshots
+![Screenshot 01](docs/GloryShot01.png)
 
 ## Config
 ### Options
