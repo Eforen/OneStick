@@ -17,6 +17,8 @@ namespace treefellingfix.src
     using Vintagestory.GameContent;
     class ItemAxeFix : ItemAxe
     {
+        static readonly int MAX_TOOL_TIER = 5;
+
         static SimpleParticleProperties dustParticles = new SimpleParticleProperties()
         {
             MinPos = new Vec3d(),
@@ -83,7 +85,17 @@ namespace treefellingfix.src
             //var test4 = one.nextFloat();
 
             var isStone = itemslot.Itemstack.Item.Code.Path.Contains("Stone");
-            var BranchRate = isStone ? ModConfig.instance.BranchDropRateStoneAxe : ModConfig.instance.BranchDropRateAxeMetal;
+
+            float LowDropRate = ModConfig.instance.ToolTierZeroFellingBranchDropRate;
+            float HighDropRate = ModConfig.instance.ToolTierZeroFellingBranchDropRate;
+            if (ModConfig.instance.ToolTierFiveFellingBranchDropRate > LowDropRate) HighDropRate = ModConfig.instance.ToolTierFiveFellingBranchDropRate;
+            else LowDropRate = ModConfig.instance.ToolTierFiveFellingBranchDropRate;
+            float spread = HighDropRate - LowDropRate;
+            float step = spread / MAX_TOOL_TIER;
+
+            float BranchRate = 0;
+            if (ModConfig.instance.UseTierMode) BranchRate = LowDropRate + itemslot.Itemstack.Item.ToolTier * step;
+            else BranchRate = isStone ? ModConfig.instance.BranchDropRateStoneAxe : ModConfig.instance.BranchDropRateAxeMetal;
             if (ModConfig.instance.DebugMode) world.Logger.Notification("BlockBroken with "+(BranchRate*100)+ "% Drop Rate");
 
             int branches = 0;
