@@ -1,3 +1,8 @@
+> ~~One Stick Mod to rule them all...~~
+> 
+> ~~And in darkness bind them!!!~~
+_Wait a second sorry thats umm something else... don't mind that... anyhow... where was I? oh yeah I fixed a thing..._
+
 # OneStick (Tree Felling Fix)
 
 Currently just fixes what appears to be a bug in the vanilla axe code. 
@@ -9,6 +14,9 @@ The game code seems to indicate that they should drop sticks around 80% of the t
 I started with this number as a static number but that did not feel right too many sticks and no ramp when using better axes.
 
 - [OneStick (Tree Felling Fix)](#onestick-tree-felling-fix)
+  - [Links n' Stuff](#links-n-stuff)
+- [Version Support](#version-support)
+    - [Older Version Support](#older-version-support)
   - [Config](#config)
     - [Options](#options)
       - [BranchDropRateStoneAxe](#branchdropratestoneaxe)
@@ -19,6 +27,18 @@ I started with this number as a static number but that did not feel right too ma
       - [DebugMode](#debugmode)
 - [Future Plans](#future-plans)
   - [Sticky sticky sticks](#sticky-sticky-sticks)
+
+## Links n' Stuff
+* [Discord](https://discord.gg/7hUxGBzauw)
+* ModDB
+* [Forum](https://www.vintagestory.at/forums/topic/9334-1165-onestick-treefellingfix/)
+
+# Version Support
+- [X] 1.16.5
+- [ ] 1.17.0+
+
+### Older Version Support
+You you ask nicely and make an issue on github for it then I am likely to make a build for what ever version you want (within reason).
 
 ## Config
 ### Options
