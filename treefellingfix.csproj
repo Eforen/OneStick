@@ -7,8 +7,8 @@
     <ProjectGuid>{1BFAA09B-0110-416B-A9A1-8114193365B7}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>treefellingfix</RootNamespace>
-    <AssemblyName>treefellingfix</AssemblyName>
+    <RootNamespace>onestick</RootNamespace>
+    <AssemblyName>onestick</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -16,8 +16,8 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\..\bin\Debug\treefellingfix\</OutputPath>
-    <IntermediateOutputPath>..\..\obj\Debug\treefellingfix\</IntermediateOutputPath>
+    <OutputPath>..\..\bin\Debug\onestick\</OutputPath>
+    <IntermediateOutputPath>..\..\obj\Debug\onestick\</IntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -25,8 +25,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\Release\treefellingfix\</OutputPath>
-    <IntermediateOutputPath>..\..\obj\Release\treefellingfix\</IntermediateOutputPath>
+    <OutputPath>..\..\bin\Release\onestick\</OutputPath>
+    <IntermediateOutputPath>..\..\obj\Release\onestick\</IntermediateOutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -62,13 +62,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="assets\treefellingfix\patches\itemaxepatch.json" />
+    <None Include="assets\onestick\patches\itemaxepatch.json" />
     <Content Include="modinfo.json" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\ItemAxeFix.cs" />
     <Compile Include="src\ModConfig.cs" />
-    <Compile Include="src\TreeFellingFixSystem.cs" />
+    <Compile Include="src\onestickSystem.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
