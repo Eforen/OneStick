@@ -42,6 +42,7 @@ I started with this number as a static number but that did not feel right too ma
 You you ask nicely and make an issue on github for it then I am likely to make a build for what ever version you want (within reason).
 
 ## Screenshots
+_A picture is worth over 9000 words!!!_
 ![Screenshot 01](docs/GloryShot01.png)
 
 ## Config
