@@ -4,9 +4,9 @@
   "name": "OneStick (Tree Felling Fix)",
   "authors": [ "Eforen" ],
   "description": "Currently just fixes what appears to be a bug in the vanilla axe code.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "dependencies": {
-    "game": "1.17.0-rc.5",
+    "game": "1.17.0",
     "survival": ""
   }
 }
