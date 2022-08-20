@@ -14,8 +14,10 @@
     <VersionGame>$([System.IO.File]::ReadAllText(VersionGame.var))</VersionGame>
     <ModNameHuman>$([System.IO.File]::ReadAllText(ModNameHuman.var))</ModNameHuman>
     <ModNameMechine>$([System.IO.File]::ReadAllText(ModNameMechine.var))</ModNameMechine>
+    <!-- <ModsOutputDir>C:/Games/MyModBuilds<ModsOutputDir> --><!-- Use this line to set a location for where all your mods go to test them together -->
   </PropertyGroup>
   <PropertyGroup>
+    <ModsOutputDir Condition=" '$(ModsOutputDir)' == '' ">$(MSBuildProjectDirectory)\$(BuildBaseDir)\mods</ModsOutputDir> <!-- This is the default don't change it just use <ModsOutputDir> above -->
     <TestWorld>$(TestWorldBase)_$(VersionGame)</TestWorld>
   </PropertyGroup>
   <!-- Do not change values after this -->
@@ -91,10 +93,15 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="ZipOutput" AfterTargets="Build">
+      <MakeDir
+            Directories="$(MSBuildProjectDirectory)\$(BuildBaseDir)\mods"/>
       <ZipDirectory
           SourceDirectory="$(OutputPath)"
-          DestinationFile="$(MSBuildProjectDirectory)\$(BuildBaseDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip"
+          DestinationFile="$(MSBuildProjectDirectory)\$(BuildBaseDir)\mods\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip"
           Overwrite="true" />
+      <Move Condition=" '$(Configuration)' == 'Debug' "
+        SourceFiles="$(MSBuildProjectDirectory)\$(BuildBaseDir)\mods\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip" 
+        DestinationFiles="$(ModsOutputDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip"/>
   </Target>
   <Target Name="WriteLaunchFile" AfterTargets="ZipOutput">
         <WriteLinesToFile
@@ -111,8 +118,7 @@
 		"args": [
 			"--playStyle" , "preset-surviveandbuild",
 			"--openWorld" , "$(TestWorld)",
-			"--addModPath", "${workspaceFolder}/bin/Debug/net461",
-			"--addOrigin" , "${workspaceFolder}/resources/assets",
+			"--addModPath", "$([System.String]::Copy("$(ModsOutputDir)").Replace("\","/"))",
 		],
 		"console": "internalConsole",
 		"internalConsoleOptions": "openOnSessionStart",
@@ -125,8 +131,7 @@
 		"args": [
 			"--playStyle" , "preset-surviveandbuild",
 			"--openWorld" , "$(TestWorld)",
-			"--addModPath", "${workspaceFolder}/bin/Debug/net461",
-			"--addOrigin" , "${workspaceFolder}/resources/assets",
+			"--addModPath", "$([System.String]::Copy("$(ModsOutputDir)").Replace("\","/"))",
 		],
 		"console": "internalConsole",
 		"internalConsoleOptions": "openOnSessionStart",
@@ -135,6 +140,6 @@
             Overwrite="true"/>
     </Target>
   <PropertyGroup>
-    <PostBuildEvent>echo $(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame)</PostBuildEvent>
+    <PostBuildEvent>echo Built $(Configuration) build of $(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame)</PostBuildEvent>
   </PropertyGroup>
 </Project>
