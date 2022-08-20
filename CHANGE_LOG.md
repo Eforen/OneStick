@@ -1,5 +1,5 @@
 # Changelog
-## v1.0.0g1.17.0rc5
+## v1.0.1g1.17.0-rc.1
 * Updated the codebase for the new method signatures of `1.17`
 * This version is compatible with `1.17.0-pre.1+`
 
