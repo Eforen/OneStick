@@ -97,10 +97,10 @@
             Directories="$(MSBuildProjectDirectory)\$(BuildBaseDir)\mods"/>
       <ZipDirectory
           SourceDirectory="$(OutputPath)"
-          DestinationFile="$(MSBuildProjectDirectory)\$(BuildBaseDir)\mods\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip"
+          DestinationFile="$(MSBuildProjectDirectory)\$(BuildBaseDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip"
           Overwrite="true" />
       <Move Condition=" '$(Configuration)' == 'Debug' "
-        SourceFiles="$(MSBuildProjectDirectory)\$(BuildBaseDir)\mods\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip" 
+        SourceFiles="$(MSBuildProjectDirectory)\$(BuildBaseDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip" 
         DestinationFiles="$(ModsOutputDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip"/>
   </Target>
   <Target Name="WriteLaunchFile" AfterTargets="ZipOutput">
