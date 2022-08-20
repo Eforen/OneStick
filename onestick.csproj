@@ -41,23 +41,23 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
     <Reference Include="VintagestoryAPI">
-      <HintPath>C:\Games\VintageStory\Vintagestory\VintagestoryAPI.dll</HintPath>
+      <HintPath>C:\Games\VintageStory\Vintagestory_1.17.0cr5\VintagestoryAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VSSurvivalMod">
-      <HintPath>C:\Games\VintageStory\Vintagestory\Mods\VSSurvivalMod.dll</HintPath>
+      <HintPath>C:\Games\VintageStory\Vintagestory_1.17.0cr5\Mods\VSSurvivalMod.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VSEssentials">
-      <HintPath>C:\Games\VintageStory\Vintagestory\Mods\VSEssentials.dll</HintPath>
+      <HintPath>C:\Games\VintageStory\Vintagestory_1.17.0cr5\Mods\VSEssentials.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="VSCreativeMod">
-      <HintPath>C:\Games\VintageStory\Vintagestory\Mods\VSCreativeMod.dll</HintPath>
+      <HintPath>C:\Games\VintageStory\Vintagestory_1.17.0cr5\Mods\VSCreativeMod.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>C:\Games\VintageStory\Vintagestory\Lib\Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:\Games\VintageStory\Vintagestory_1.17.0cr5\Lib\Newtonsoft.Json.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
