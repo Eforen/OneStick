@@ -1,3 +1,5 @@
 GameFilesPrefix.var
 bin
 obj
+.env
+.vscode/launch.json

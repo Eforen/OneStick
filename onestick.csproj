@@ -5,6 +5,7 @@
     <!-- These are the config values -->
     <BuildBaseDir>bin</BuildBaseDir>
     <BuildCacheDir>obj</BuildCacheDir>
+    <TestWorldBase>moddingtestworld</TestWorldBase>
     <!-- These values after here should not need to be changed -->
     <VersionModMajor>$([System.IO.File]::ReadAllText(VersionModMajor.var))</VersionModMajor>
     <VersionModMinor>$([System.IO.File]::ReadAllText(VersionModMinor.var))</VersionModMinor>
@@ -13,6 +14,9 @@
     <VersionGame>$([System.IO.File]::ReadAllText(VersionGame.var))</VersionGame>
     <ModNameHuman>$([System.IO.File]::ReadAllText(ModNameHuman.var))</ModNameHuman>
     <ModNameMechine>$([System.IO.File]::ReadAllText(ModNameMechine.var))</ModNameMechine>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TestWorld>$(TestWorldBase)_$(VersionGame)</TestWorld>
   </PropertyGroup>
   <!-- Do not change values after this -->
   <PropertyGroup>
@@ -30,8 +34,8 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>$(BuildBaseDir)\$(Configuration)\$(AssemblyName)\</OutputPath>
-    <IntermediateOutputPath>$(BuildCacheDir)\$(Configuration)\$(AssemblyName)\</IntermediateOutputPath>
+    <OutputPath>$(MSBuildProjectDirectory)\$(BuildBaseDir)\$(Configuration)\$(AssemblyName)\</OutputPath>
+    <IntermediateOutputPath>$(MSBuildProjectDirectory)\$(BuildCacheDir)\$(Configuration)\$(AssemblyName)\</IntermediateOutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -39,8 +43,8 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>$(BuildBaseDir)\$(Configuration)\$(AssemblyName)\</OutputPath>
-    <IntermediateOutputPath>$(BuildCacheDir)\$(Configuration)\$(AssemblyName)\</IntermediateOutputPath>
+    <OutputPath>$(MSBuildProjectDirectory)\$(BuildBaseDir)\$(Configuration)\$(AssemblyName)\</OutputPath>
+    <IntermediateOutputPath>$(MSBuildProjectDirectory)\$(BuildCacheDir)\$(Configuration)\$(AssemblyName)\</IntermediateOutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -86,11 +90,50 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Target Name="ZipOutputPath" AfterTargets="Build">
+  <Target Name="ZipOutput" AfterTargets="Build">
       <ZipDirectory
           SourceDirectory="$(OutputPath)"
-          DestinationFile="$(BuildBaseDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip" />
+          DestinationFile="$(MSBuildProjectDirectory)\$(BuildBaseDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip"
+          Overwrite="true" />
   </Target>
+  <Target Name="WriteLaunchFile" AfterTargets="ZipOutput">
+        <WriteLinesToFile
+            File="$(MSBuildProjectDirectory)\.vscode\launch.json"
+            Lines='{
+	"version": "0.2.0",
+	"configurations": [{
+		"name": "Launch Client (.NET)",
+		"type": "clr",
+		"request": "launch",
+		"preLaunchTask": "Build (Debug)",
+        "envFile": "${workspaceFolder}/.env",
+		"program": "$([System.String]::Copy("$(GameFilesPrefix)").Replace("\","/"))$(VersionGame)/Vintagestory.exe",
+		"args": [
+			"--playStyle" , "preset-surviveandbuild",
+			"--openWorld" , "$(TestWorld)",
+			"--addModPath", "${workspaceFolder}/bin/Debug/net461",
+			"--addOrigin" , "${workspaceFolder}/resources/assets",
+		],
+		"console": "internalConsole",
+		"internalConsoleOptions": "openOnSessionStart",
+	},{
+		"name": "Launch Client (Mono)",
+		"type": "mono",
+		"request": "launch",
+		"preLaunchTask": "Build (Debug)",
+		"program": "$([System.String]::Copy("$(GameFilesPrefix)").Replace("\","/"))$(VersionGame)/Vintagestory.exe",
+		"args": [
+			"--playStyle" , "preset-surviveandbuild",
+			"--openWorld" , "$(TestWorld)",
+			"--addModPath", "${workspaceFolder}/bin/Debug/net461",
+			"--addOrigin" , "${workspaceFolder}/resources/assets",
+		],
+		"console": "internalConsole",
+		"internalConsoleOptions": "openOnSessionStart",
+	}]
+}'
+            Overwrite="true"/>
+    </Target>
   <PropertyGroup>
     <PostBuildEvent>echo $(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame)</PostBuildEvent>
   </PropertyGroup>
