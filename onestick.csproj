@@ -12,6 +12,7 @@
     <VersionModPatch>$([System.IO.File]::ReadAllText(VersionModPatch.var))</VersionModPatch>
     <GameFilesPrefix>$([System.IO.File]::ReadAllText(GameFilesPrefix.var))</GameFilesPrefix>
     <VersionGame>$([System.IO.File]::ReadAllText(VersionGame.var))</VersionGame>
+    <VersionGameMinimum>$([System.IO.File]::ReadAllText(VersionGameMinimum.var))</VersionGameMinimum>
     <ModNameHuman>$([System.IO.File]::ReadAllText(ModNameHuman.var))</ModNameHuman>
     <ModNameMechine>$([System.IO.File]::ReadAllText(ModNameMechine.var))</ModNameMechine>
     <!-- <ModsOutputDir>C:/Games/MyModBuilds<ModsOutputDir> --><!-- Use this line to set a location for where all your mods go to test them together -->
@@ -97,11 +98,11 @@
             Directories="$(MSBuildProjectDirectory)\$(BuildBaseDir)\mods"/>
       <ZipDirectory
           SourceDirectory="$(OutputPath)"
-          DestinationFile="$(MSBuildProjectDirectory)\$(BuildBaseDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip"
+          DestinationFile="$(MSBuildProjectDirectory)\$(BuildBaseDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGameMinimum).$(Configuration).zip"
           Overwrite="true" />
       <Move Condition=" '$(Configuration)' == 'Debug' "
-        SourceFiles="$(MSBuildProjectDirectory)\$(BuildBaseDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip" 
-        DestinationFiles="$(ModsOutputDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGame).$(Configuration).zip"/>
+        SourceFiles="$(MSBuildProjectDirectory)\$(BuildBaseDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGameMinimum).$(Configuration).zip" 
+        DestinationFiles="$(ModsOutputDir)\$(ModNameHuman)_v$(VersionModMajor).$(VersionModMinor).$(VersionModPatch)g$(VersionGameMinimum).$(Configuration).zip"/>
   </Target>
   <Target Name="WriteLaunchFile" AfterTargets="ZipOutput">
         <WriteLinesToFile

@@ -30,10 +30,10 @@ using Vintagestory.API.Common;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.0.1.0")]
+[assembly: AssemblyFileVersion("1.0.1.0")]
 
 
 [assembly: ModDependency("game")]
-[assembly: ModInfo("OneStick", "onestick", Version = "1.0.0", Authors = new string[] { "Eforen" },
+[assembly: ModInfo("OneStick", "onestick", Version = "1.0.1", Authors = new string[] { "Eforen" },
         Website = "https://github.com/Eforen/OneStick", Description = "Currently just fixes what appears to be a bug in the vanilla axe code.", RequiredOnClient = false)]
