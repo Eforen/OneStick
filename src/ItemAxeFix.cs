@@ -63,7 +63,7 @@ namespace onestick.src
             double windspeed = 0;
             if(weatherSystemBase!=null) windspeed = weatherSystemBase.WeatherDataSlowAccess.GetWindSpeed(byEntity.SidedPos.XYZ);
 
-            Stack<BlockPos> foundPositions = FindTree(world, blockSel.Position);
+            Stack<BlockPos> foundPositions = FindTree(world, blockSel.Position, out int _, out int woodTier);
 
             if (foundPositions.Count == 0)
             {
