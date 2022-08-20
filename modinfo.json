@@ -6,7 +6,7 @@
   "description": "Currently just fixes what appears to be a bug in the vanilla axe code.",
   "version": "1.0.0",
   "dependencies": {
-    "game": "1.16.5",
+    "game": "1.17.0-rc.5",
     "survival": ""
   }
 }
