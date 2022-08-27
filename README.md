@@ -1,3 +1,10 @@
+![Follows Badge](https://img.shields.io/badge/dynamic/json?color=orange&label=ModDB%20Follows&query=%24.mod.follows&url=https%3A%2F%2Fmods.vintagestory.at%2Fapi%2Fmod%2Fonestick)
+![Downloads Badge](https://img.shields.io/badge/dynamic/json?color=orange&label=ModDB%20Downloads&query=%24.mod.downloads&url=https%3A%2F%2Fmods.vintagestory.at%2Fapi%2Fmod%2Fonestick)
+![ModDB Tags](https://img.shields.io/badge/dynamic/json?label=ModDB%20Tags&query=%24.mod.tags&url=https%3A%2F%2Fmods.vintagestory.at%2Fapi%2Fmod%2Fonestick)
+
+![Maintained](https://img.shields.io/maintenance/yes/2022)
+![GitHub License](https://img.shields.io/github/license/eforen/onestick)
+
 > ~~One Stick Mod to rule them all...~~
 > 
 > ~~And in darkness bind them!!!~~
